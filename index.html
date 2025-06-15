@@ -23,13 +23,14 @@
     svg {
       width: 100%;
       height: 100%;
-      stroke: #ff00ff;
+      stroke: #9900cc; /* koyu neon mor */
       fill: none;
-      stroke-width: 4;
+      stroke-width: 2; /* daha ince çizgi */
       stroke-dasharray: 1000;
       stroke-dashoffset: 1000;
-      animation: drawHeart 3s ease forwards;
-      filter: drop-shadow(0 0 10px #ff00ff) drop-shadow(0 0 20px #ff00ff);
+      animation: drawHeart 5s ease forwards;
+      animation-delay: 1s;
+      filter: drop-shadow(0 0 6px #9900cc) drop-shadow(0 0 12px #9900cc);
     }
 
     @keyframes drawHeart {
@@ -43,12 +44,13 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-size: 8vmin;
-      color: #ff00ff;
+      font-size: 10vmin; /* daha büyük N */
+      color: #9900cc;
       font-family: 'Arial Black', sans-serif;
-      text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+      text-shadow: 0 0 6px #9900cc, 0 0 12px #9900cc;
       opacity: 0;
-      animation: fadeInText 1s ease 3s forwards;
+      animation: fadeInText 0.5s ease forwards;
+      animation-delay: 6s; /* 1s bekleme + 5s çizim = 6s */
     }
 
     @keyframes fadeInText {
