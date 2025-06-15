@@ -62,20 +62,21 @@ svg {
 
 .prompt-text {
   position: absolute;
-  top: 10%;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
-  font-size: 5vmin;
+  font-size: 6vmin;
   color: #9900cc;
   text-shadow: 0 0 5px #9900cc, 0 0 10px #9900cc;
   z-index: 2;
+  white-space: pre-line;
 }
 
 .heartParticle {
   position: absolute;
-  width: 1.5em;
-  height: 1.5em;
   color: #9900cc;
-  font-size: calc(0.5em + 2vmin);
+  font-size: calc(1vmin + 1.5vmin + 1.5 * random);
   filter: drop-shadow(0 0 3px #9900cc);
   pointer-events: none;
   user-select: none;
@@ -107,7 +108,7 @@ iframe {
 </head>
 <body>
   <section id="heartSection" onclick="handleClick()">
-    <div class="prompt-text" id="promptText">Bebeğim ekrana tıklar mısın</div>
+    <div class="prompt-text" id="promptText">Bebeğim\nekrana tıklar mısın</div>
     <div id="particles"></div>
     <div class="container" id="heartContainer">
       <svg viewBox="0 0 32 29.6" preserveAspectRatio="xMidYMid meet" id="heartSvg">
@@ -125,14 +126,27 @@ iframe {
   </section>  <script>
     let clickCount = 0;
 
-    // Kalp partiküllerini oluştur
-    for (let i = 0; i < 25; i++) {
+    // Kalp partiküllerini oluştur (yazının çevresinden uzak konumlandır)
+    const promptRect = { x: 25, y: 25, w: 50, h: 50 }; // ortadaki % alan
+    for (let i = 0; i < 30; i++) {
+      let x = Math.random() * 100;
+      let y = Math.random() * 100;
+
+      // Yazıya çok yakınsa yeniden konumlandır
+      while (
+        x > promptRect.x && x < promptRect.x + promptRect.w &&
+        y > promptRect.y && y < promptRect.y + promptRect.h
+      ) {
+        x = Math.random() * 100;
+        y = Math.random() * 100;
+      }
+
       const heart = document.createElement('div');
       heart.className = 'heartParticle';
       heart.innerHTML = '❤';
-      heart.style.top = `${Math.random() * 100}%`;
-      heart.style.left = `${Math.random() * 100}%`;
-      heart.style.fontSize = `${1 + Math.random() * 2}vmin`;
+      heart.style.top = `${y}%`;
+      heart.style.left = `${x}%`;
+      heart.style.fontSize = `${1 + Math.random() * 3}vmin`;
       document.getElementById('particles').appendChild(heart);
     }
 
