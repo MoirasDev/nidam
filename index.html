@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -12,6 +12,8 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
+      flex-direction: column;
+      font-family: 'Segoe UI', sans-serif;
     }
 
     .container {
@@ -23,11 +25,11 @@
     svg {
       width: 100%;
       height: 100%;
-      stroke: #9900cc; /* koyu neon mor */
+      stroke: #9900cc;
       fill: none;
-      stroke-width: 2; /* daha ince çizgi */
-      stroke-dasharray: 1000;
-      stroke-dashoffset: 1000;
+      stroke-width: 2;
+      stroke-dasharray: 2000;
+      stroke-dashoffset: 2000;
       animation: drawHeart 5s ease forwards;
       animation-delay: 1s;
       filter: drop-shadow(0 0 6px #9900cc) drop-shadow(0 0 12px #9900cc);
@@ -44,16 +46,32 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-size: 10vmin; /* daha büyük N */
+      font-size: 10vmin;
       color: #9900cc;
       font-family: 'Arial Black', sans-serif;
       text-shadow: 0 0 6px #9900cc, 0 0 12px #9900cc;
       opacity: 0;
       animation: fadeInText 0.5s ease forwards;
-      animation-delay: 6s; /* 1s bekleme + 5s çizim = 6s */
+      animation-delay: 6s;
+    }
+
+    .subtext {
+      margin-top: 20px;
+      font-size: 5vmin;
+      color: #9900cc;
+      text-shadow: 0 0 6px #9900cc, 0 0 12px #9900cc;
+      opacity: 0;
+      animation: fadeInSubtext 1s ease forwards;
+      animation-delay: 6.5s;
     }
 
     @keyframes fadeInText {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeInSubtext {
       to {
         opacity: 1;
       }
@@ -68,5 +86,6 @@
     </svg>
     <div class="text">N</div>
   </div>
+  <div class="subtext">Mustafa Nida'yı çok seviyor</div>
 </body>
 </html>
